@@ -19,6 +19,7 @@ async function showWorks() {
     figure.appendChild(img);
     figure.appendChild(figcaption);
     img.src = arrayWorks[i].imageUrl;
+    img.alt = arrayWorks[i].title;
     figcaption.innerHTML = arrayWorks[i].title;
   }
 }
