@@ -1,6 +1,6 @@
 /****** variables du projet ******/
 const gallery = document.querySelector(".gallery");
-const filterCategories = document.querySelector(".gallery__filter");
+const buttonCategories = document.querySelector(".gallery__filter");
 
 /****** test backend + récupération des projets ******/
 async function getWorks() {
@@ -11,7 +11,6 @@ getWorks();
 
 async function showWorks() {
   const arrayWorks = await getWorks();
-  console.log(arrayWorks);
   for (i = 0; i < arrayWorks.length; i++) {
     const figure = document.createElement("figure");
     const img = document.createElement("img");
@@ -35,17 +34,27 @@ async function getCategories() {
 }
 getCategories();
 
-async function showCategories() {
+async function btnCategories() {
   const arrayCategories = await getCategories();
   for (i = 0; i < arrayCategories.length; i++) {
     const btn = document.createElement("button");
-    filterCategories.appendChild(btn);
+    buttonCategories.appendChild(btn);
     btn.classList.add("button");
     btn.innerHTML = arrayCategories[i].name;
     btn.id = arrayCategories[i].id;
-    console.log(btn.id);
   }
 }
-showCategories();
+btnCategories();
 
 /* deuxième étape: filtrer l'affichage des catégories au click */
+async function filterCategories() {
+  const arrayFilter = await getWorks();
+  const buttons = document.querySelectorAll(".gallery__filter button");
+  buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      btnid = e.target.id;
+      console.log(btnid);
+    });
+  });
+}
+filterCategories();

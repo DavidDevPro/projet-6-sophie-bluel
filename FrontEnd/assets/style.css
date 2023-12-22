@@ -140,10 +140,15 @@ li:hover {
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	padding: 5px 20px;
-	background-color: white;
+	background-color: #fff;
 	font-size: 1.3em;
 	font-weight: 700;
 	cursor: pointer;
+	transition: all 250ms ease-in-out;
+}
+.button:hover {
+	background-color: #0E2F28;
+	color:#fff;
 }
 .selected {
 	background-color: #1D6154;
