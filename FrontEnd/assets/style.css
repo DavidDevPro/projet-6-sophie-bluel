@@ -222,7 +222,45 @@ footer nav ul {
 .form__login form {
 	display: flex;
 	flex-direction: column;
+	gap: 7px;
 }
-
-
-
+.form__login h2 {
+	text-align: center;
+	 margin: 150px auto 20px; 
+	font-weight: 700;
+	color: #1D6154;
+	font-size: 2.5em;
+}
+#email,
+#password {
+	max-width: 100%;
+	width: 450px;
+	height: 50px;
+	margin: auto ;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.10);
+	border: none;
+	outline: none;
+	font-size: 1.5em;
+}
+.form__label {
+	width: 454px;
+	margin: auto;
+	margin-top: 30px;
+	font-weight: 600;
+	color: #3D3D3D;
+	font-family: 'Work Sans';
+}
+#submit {
+	width: 179px;
+	height: 36px;
+	font-family: 'Syne';
+	font-weight: 700;
+	border: none;
+	cursor: pointer;
+}
+#form__user a {
+	color: #3D3D3D;
+	text-align: center;
+	font-weight: 600;
+	margin-bottom: 300px;
+}

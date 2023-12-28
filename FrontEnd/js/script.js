@@ -9,15 +9,6 @@ async function getWorks() {
 }
 getWorks();
 
-/****** affichage des projets sur le dom ******/
-async function displayWorks() {
-  gallery.innerHTML = "";
-  const arrayWorks = await getWorks(); //récupération des projets
-  arrayWorks.forEach((work) => {
-    createWork(work);
-  });
-}
-displayWorks();
 // création d'un seul projet
 function createWork(work) {
   const baliseFigure = document.createElement("figure");
@@ -30,6 +21,16 @@ function createWork(work) {
   baliseFigure.appendChild(images);
   baliseFigure.appendChild(figcaption);
 }
+
+/****** affichage des projets sur le dom ******/
+async function displayWorks() {
+  gallery.innerHTML = "";
+  const arrayWorks = await getWorks(); //récupération des projets
+  arrayWorks.forEach((work) => {
+    createWork(work);
+  });
+}
+displayWorks();
 
 /****** première étape: récupération des catégories sur l'API ******/
 async function getCategories() {
