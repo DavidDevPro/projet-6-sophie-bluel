@@ -1,15 +1,14 @@
-/****** variables du projet ******/
+/********** variables du projet work & categories **********/
 const gallery = document.querySelector(".gallery");
 const btnCategories = document.querySelector(".gallery__filter");
 
-/****** première étape: récupération des projets sur l'API ******/
+/********** récupération des projets sur l'API **********/
 async function getWorks() {
   const response = await fetch("http://localhost:5678/api/works");
   return await response.json();
 }
-getWorks();
 
-// création d'un seul projet
+/********** création d'un seul projet **********/
 function createWork(work) {
   const baliseFigure = document.createElement("figure");
   const images = document.createElement("img");
@@ -22,26 +21,24 @@ function createWork(work) {
   baliseFigure.appendChild(figcaption);
 }
 
-/****** affichage des projets sur le dom ******/
+/********** affichage des projets sur le dom **********/
 async function displayWorks() {
   gallery.innerHTML = "";
-  const arrayWorks = await getWorks(); //récupération des projets
+  const arrayWorks = await getWorks(); //tableau des projets
   arrayWorks.forEach((work) => {
     createWork(work);
   });
 }
-displayWorks();
 
-/****** première étape: récupération des catégories sur l'API ******/
+/********** récupération des catégories sur l'API **********/
 async function getCategories() {
   const response = await fetch("http://localhost:5678/api/categories");
   return await response.json();
 }
-getCategories();
 
-/****** création et affichage des boutons sur le dom ******/
+/********** création et affichage des boutons sur le dom **********/
 async function displayCategories() {
-  const arrayCategories = await getCategories(); //récupération des catégories
+  const arrayCategories = await getCategories(); //tableau des catégories
   for (i = 0; i < arrayCategories.length; i++) {
     const btn = document.createElement("button");
     btn.classList.add("button");
@@ -50,9 +47,8 @@ async function displayCategories() {
     btnCategories.appendChild(btn);
   }
 }
-displayCategories();
 
-/****** filtrage des projets par catégories ******/
+/********** filtrage des projets par catégories **********/
 async function btnFilter() {
   const arrayWorks = await getWorks();
   const arrayBtn = document.querySelectorAll(".gallery__filter button");
@@ -70,4 +66,13 @@ async function btnFilter() {
     });
   });
 }
-btnFilter();
+
+/********** fonction principal main **********/
+function main() {
+  getWorks();
+  displayWorks();
+  getCategories();
+  displayCategories();
+  btnFilter();
+}
+main();
