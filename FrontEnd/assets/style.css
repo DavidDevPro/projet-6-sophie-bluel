@@ -146,14 +146,11 @@ li:hover {
 	cursor: pointer;
 	transition: all 250ms ease-in-out;
 }
-.button:hover {
-	background-color: #0E2F28;
+.button:focus {
+	background-color: #1D6154;
 	color:#fff;
 }
-.selected {
-	background-color: #1D6154;
-	color: white;
-}
+
 .gallery {
 	width: 100%;
 	display: grid;
