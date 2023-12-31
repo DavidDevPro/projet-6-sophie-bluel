@@ -32,6 +32,7 @@ function login() {
         const userData = await response.json();
         localStorage.setItem("token", userData.token);
         //console.log(userData);
+        window.sessionStorage.loged = true;
         window.location.href = "./index.html"; // rediréction page d'accueil du site
         //console.log("yeah!!! connecté!!");
       } else if (response.status === 401) {

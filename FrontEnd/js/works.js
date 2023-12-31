@@ -69,6 +69,19 @@ async function btnFilter() {
 
 /********** suite et fin du code une fois la connection ok **********/
 
+/********** variables suite et fin connection ***********/
+const loged = window.sessionStorage.loged;
+const admin = document.querySelector(".admin");
+const logout = document.querySelector(".logout");
+
+/********** bouton logout, admin et logique de déconnection ***********/
+if (loged === "true") {
+  admin.textContent = "Admin";
+  logout.textContent = "Logout";
+  logout.addEventListener("click", () => {
+    window.sessionStorage.loged = false;
+  });
+}
 /********** fonction principal main **********/
 function main() {
   getWorks();
