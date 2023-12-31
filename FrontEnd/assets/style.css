@@ -231,6 +231,16 @@ footer nav ul {
 	color: #1D6154;
 	font-size: 2.5em;
 }
+#message__error {
+	color: rgb(255, 0, 0);
+	text-align: center;
+	font-weight: 600;
+	font-family: 'Work Sans';
+	font-size: 1.1em;
+}
+.border__error {
+	border: 2px solid rgb(255, 0, 0) !important;
+}
 #email,
 #password {
 	max-width: 100%;
@@ -262,5 +272,5 @@ footer nav ul {
 	color: #3D3D3D;
 	text-align: center;
 	font-weight: 600;
-	margin-bottom: 300px;
+	margin-bottom: 30px;
 }

@@ -67,6 +67,8 @@ async function btnFilter() {
   });
 }
 
+/********** suite et fin du code une fois la connection ok **********/
+
 /********** fonction principal main **********/
 function main() {
   getWorks();
