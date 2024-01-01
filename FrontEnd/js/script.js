@@ -71,17 +71,39 @@ async function btnFilter() {
 
 /********** variables suite et fin connection ***********/
 const loged = window.sessionStorage.loged;
-const admin = document.querySelector(".admin");
 const logout = document.querySelector(".logout");
+const header = document.getElementById("header");
+
+/********** fonction d'ajout de la partie edition dans le header **********/
+function headerEdition() {
+  const editionBanner = document.createElement("div");
+  editionBanner.classList.add("edition__mode");
+  editionBanner.innerHTML = `<p><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>`;
+  header.classList.add("header__margin");
+  header.appendChild(editionBanner);
+}
+
+/********** fonction d'ajout du bouton d'edition **********/
+function createBtnModifier() {
+  const parentTitle = document.querySelector(".portfolio__title");
+  const createBtn = document.createElement("div");
+  createBtn.classList.add("btn__modifier");
+  parentTitle.appendChild(createBtn);
+  createBtn.innerHTML =
+    '<i class="fa-regular fa-pen-to-square"></i>Mode édition';
+}
 
 /********** bouton logout, admin et logique de déconnection ***********/
 if (loged === "true") {
-  admin.textContent = "Admin";
   logout.textContent = "Logout";
+  headerEdition();
+  createBtnModifier();
+  btnCategories.classList.add("gallery__filter__remove");
   logout.addEventListener("click", () => {
     window.sessionStorage.loged = false;
   });
 }
+
 /********** fonction principal main **********/
 function main() {
   getWorks();
