@@ -47,16 +47,21 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
-body {
+/****** style pour la création de la modal  ******/
+
+header,
+main,
+footer {
 	max-width: 1140px;
-	margin:auto;
+	margin: 0 auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
 }
 #header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0;
+	margin: 30px auto 20px;
+	
 }
 .header__margin {
 	margin: 89px auto 0 !important;
@@ -268,7 +273,7 @@ footer nav ul {
 	margin: 2em
 }
 
-/****** style page login  ******/
+/****** style pour le formulaire de la page de connection  ******/
 .form__login form {
 	display: flex;
 	flex-direction: column;
@@ -323,5 +328,60 @@ footer nav ul {
 	text-align: center;
 	font-weight: 600;
 	margin-bottom: 30px;
+}
+
+/********** création de la modal **********/
+.modal__container {
+	display: none;
+	position: fixed;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(128,128,128,0.40);
+	margin-top: -89px;
+}
+.modal__projets {
+	background-color: #fff;
+	width: 630px;
+	height: 688px;
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 15px;
+	position: relative;
+}
+.fa-xmark {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	font-size: 1.8em;
+	cursor: pointer;
+}
+.modal__projets h3 {
+	font-family: 'Work Sans';
+	font-size: 1.6em;
+	position: absolute;
+	top: 60px;
+}
+.modal__projets .button {
+	width: 250px;
+	color: #fff;
+	background-color: #1D6154;
+	margin-bottom: 15px;
+	padding: 10px;
+}
+.modal__projets .button:before {
+	content: "";
+	position: absolute;
+	background-color: rgba(128, 128, 128, 0.61);
+	height: 2px;
+	width: 420px;
+	bottom: 140px;
+	left: 50%;
+	transform: translateX(-50%);
 }
 

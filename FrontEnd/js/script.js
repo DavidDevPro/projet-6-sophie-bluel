@@ -98,9 +98,28 @@ if (loged === "true") {
   logout.textContent = "Logout";
   headerEdition();
   createBtnModifier();
+  displayModal();
   btnCategories.classList.add("gallery__filter__remove");
   logout.addEventListener("click", () => {
     window.sessionStorage.loged = false;
+  });
+}
+
+/********** fonction d'affichage de la modal au click sur le bouton modifier ***********/
+function displayModal() {
+  const btnModal = document.querySelector(".btn__modifier");
+  const containerModal = document.querySelector(".modal__container");
+  const xmark = document.querySelector(".modal__container .fa-xmark");
+  btnModal.addEventListener("click", () => {
+    containerModal.style.display = "flex";
+  });
+  xmark.addEventListener("click", () => {
+    containerModal.style.display = "none";
+  });
+  containerModal.addEventListener("click", (e) => {
+    if (e.target.className === "modal__container") {
+      containerModal.style.display = "none";
+    }
   });
 }
 
