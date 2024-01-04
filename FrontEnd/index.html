@@ -16,6 +16,7 @@
 
 <body>
 
+	<!-- première modal avec images des projets ------------>
 	<div class="modal__container">
 		<div class="modal__projets">
 			<span><i class="fa-solid fa-xmark"></i></span>
@@ -23,8 +24,38 @@
 			<div class="modal__content"></div>
 			<button class="button">Ajouter photo</button>
 		</div>
+		<!-- deuxième modal avec options d'ajout photos ------------>
+		<div class="modal__addProjets">
+			<span><i class="fa-solid fa-arrow-left"></i></span>
+			<span><i class="fa-solid fa-xmark"></i></span>
+			<h3>Ajout photo</h3>
+			<form action="">
+				<div class="modal__containerFile">
+					<span><i class="fa-regular fa-image"></i></span>
+					<label for="file">+ Ajouter photo</label>
+					<input type="file" id="modal__file" name="imageUrl">
+					<img src="#" alt="Aperçut de l'image">
+					<p>jpg, png: 4mo max</p>
+				</div>
+				<label for="title" class="modal__label">Titre</label>
+				<input type="text" id="modal__title" name="title">
+				<label for="category" class="modal__label">Catégorie</label>
+				<select name="categoryId" id="modal__category">
+					<option value="0"></option>
+					<option value="1">Objets</option>
+					<option value="2">Appartements</option>
+					<option value="3">Hotels & restaurants</option>
+				</select>
+				<button class="button">Valider</button>
+			</form>
+		</div>
 	</div>
+	<!-- fin des modals ------------>
 
+
+
+
+	<!-- header ------------>
 	<header id="header">
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
@@ -56,11 +87,16 @@
 			<div class="portfolio__title">
 				<h2>Mes Projets</h2>
 			</div>
+
+			<!-- boutons de filtrage par catégories ------------>
 			<div class="gallery__filter">
 				<button class="button" id="0">Tous</button>
 			</div>
+
+			<!-- .gallery, ajout des projets en js ------------>
 			<div class="gallery"></div>
 		</section>
+
 		<section id="contact">
 			<h2>Contact</h2>
 			<p>Vous avez un projet ? Discutons-en !</p>
@@ -76,6 +112,7 @@
 		</section>
 	</main>
 
+	<!-- footer ------------>
 	<footer>
 		<nav>
 			<ul>

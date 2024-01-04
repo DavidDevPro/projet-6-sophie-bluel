@@ -30,16 +30,11 @@ async function login() {
       const userData = await response.json();
       sessionStorage.setItem("token", userData.token);
       sessionStorage.setItem("userId", userData.userId);
-      //console.log(userData);
       window.sessionStorage.loged = true;
       window.location.href = "./index.html"; // rediréction page d'accueil du site
-    } else if (response.status === 401) {
-      messageError.textContent =
-        "L'adresse mail ou le mot de passe ne sont pas valides.";
-      borderError();
     } else {
       messageError.textContent =
-        "Une erreur s'est produite lors de la connexion. Veuillez réessayer.";
+        "L'adresse email ou le mot de passe ne sont pas valides. Veuillez réessayer.";
       console.error("Erreur lors de la connexion:", response.statusText);
       borderError();
     }
