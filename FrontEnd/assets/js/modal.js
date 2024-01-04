@@ -25,9 +25,9 @@ projetsModal();
 function deleteProjet() {
   const trashIcons = document.querySelectorAll(".fa-trash-can");
   trashIcons.forEach((trash) => {
-    trash.addEventListener("click", (e) => {
+    trash.addEventListener("click", async (e) => {
       const id = trash.id;
-      const response = fetch("http://localhost:5678/api/works/" + id, {
+      const response = await fetch("http://localhost:5678/api/works/" + id, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -35,6 +35,7 @@ function deleteProjet() {
         },
       });
       if (response.ok) {
+        const data = await response.json();
         console.log("la delete a réussi voici la data :", data);
         projetsModal();
         displayWorks();
@@ -73,3 +74,28 @@ function displaySecondModal() {
 displaySecondModal();
 
 /********** prévisualisation de l'image du projet **********/
+const containerFile = document.querySelector(".modal__containerFile");
+const inputFile = containerFile.querySelector("#file");
+const previewImg = containerFile.querySelector("img");
+const labelFile = containerFile.querySelector("label");
+const iconFile = containerFile.querySelector(".fa-image");
+const pFile = containerFile.querySelector("p");
+
+inputFile.addEventListener("change", () => {
+  console.log("Input file changed!");
+  const file = inputFile.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      previewImg.src = e.target.result;
+      containerFile.style.display = "flex";
+      [labelFile, iconFile, pFile].forEach((element) => {
+        element.style.display = "none";
+      });
+      // Affiche l'image une fois chargée
+      previewImg.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+  }
+});
