@@ -75,8 +75,6 @@ btnFilter();
 const loged = window.sessionStorage.loged;
 const logout = document.querySelector(".logout");
 const header = document.getElementById("header");
-const token = window.sessionStorage.token;
-const userId = window.sessionStorage.userId;
 
 /********** fonction d'ajout de la partie edition dans le header **********/
 function headerEdition() {
@@ -109,14 +107,6 @@ if (loged === "true") {
     window.sessionStorage.loged = false;
   });
 }
-
-logout.addEventListener("click", () => {
-  if (loged === "true") {
-    window.location.href = "./index.html";
-  } else {
-    window.location.href = "./login.html";
-  }
-});
 
 /********** fonction d'affichage de la modal au click sur le bouton modifier ***********/
 function displayModal() {

@@ -28,8 +28,7 @@ async function login() {
 
     if (response.ok) {
       const userData = await response.json();
-      sessionStorage.setItem("token", userData.token);
-      sessionStorage.setItem("userId", userData.userId);
+      localStorage.setItem("token", userData.token);
       //console.log(userData);
       window.sessionStorage.loged = true;
       window.location.href = "./index.html"; // rediréction page d'accueil du site

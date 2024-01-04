@@ -17,25 +17,9 @@ async function projetsModal() {
     figure.appendChild(span);
     span.appendChild(trash);
   });
-  deleteProjet(); /********** => => => ATTENTION !!! faire jouer la fonction deleteProjet
+  /********** => => => ATTENTION !!! faire jouer la fonction deleteProjet
                   une fois que la fonction projectModal ai fini d'être lu !!! ATTENTION **********/
 }
 projetsModal();
 
 /********** suppéssion au click d'une image dans la modal **********/
-function deleteProjet() {
-  const trashIcons = document.querySelectorAll(".fa-trash-can");
-  console.log(trashIcons);
-  trashIcons.forEach((trash) => {
-    trash.addEventListener("click", (e) => {
-      const id = trash.id;
-      fetch("http://localhost:5678/api/works/" + id, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-    });
-  });
-}
