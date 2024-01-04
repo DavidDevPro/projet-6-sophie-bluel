@@ -1,0 +1,221 @@
+/********** création de la modal **********/
+.modal__container {
+	display: none;
+	position: fixed;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(128,128,128,0.40);
+	margin-top: -89px;
+}
+.modal__projets {
+	background-color: #fff;
+	width: 630px;
+	height: 688px;
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 15px;
+	position: relative;
+}
+.fa-xmark {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	font-size: 1.8em;
+	cursor: pointer;
+}
+.modal__projets h3,
+.modal__addProjets h3 {
+	font-family: 'Work Sans';
+	font-size: 1.6em;
+	position: absolute;
+	top: 70px;
+}
+.modal__projets .button {
+	width: 250px;
+	color: #fff;
+	background-color: #1D6154;
+	margin-bottom: 15px;
+	padding: 10px;
+}
+.modal__projets .button:before {
+	content: "";
+	position: absolute;
+	background-color: rgba(128, 128, 128, 0.61);
+	height: 1px;
+	width: 420px;
+	bottom: 140px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/********** création du contenue de la première modal **********/
+.modal__content {
+	width: 420px;
+	height: 380px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	
+}
+.modal__content figure{
+	width: 18%;
+	position: relative;
+}
+.modal__content img {
+	width: 100%;
+}
+.modal__content span {
+	width: 17px;
+	height: 19px;
+	position: absolute;
+	top: 7px;
+	right: 7px;
+	background-color: #000;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+} 
+.fa-trash-can {
+	font-size: 0.65em;
+}
+
+/********** création du contenue de la deuxième modal **********/
+.modal__addProjets {
+	display: none;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 688px;
+  width: 630px;
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+	padding: 30px;
+	border-radius: 15px;
+}
+
+.fa-arrow-left {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	font-size: 1.8em;
+	cursor: pointer;
+}
+
+.modal__addProjets .fa-xmark {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	font-size: 1.8em;
+	cursor: pointer;
+}
+
+.modal__addProjets form{
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80%;
+  width: 420px;
+  gap: 10px;
+}
+
+.modal__containerFile {
+	background-color: #E8F1F6;
+  height: 170px;
+	width: 420px;
+  display: flex;
+	gap: 7px;
+  flex-direction: column;
+  align-items: center;
+	justify-content: center;
+  border-radius: 5px;
+	margin: 35px auto 20px;
+}
+
+.fa-image {
+	color: #CBD6DC;
+	 font-size: 4.7em;
+}
+
+.modal__containerFile label {
+	background-color: #CBD6DC;
+  color: #306685;
+	font-size: 0.9em;
+	font-family: 'Work Sans';
+	font-weight: 600;
+  border-radius: 50px;
+  padding: 11px 32px;
+  cursor: pointer;
+}
+
+.modal__containerFile p {
+	color: #444;
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 0.65em;
+}
+
+.modal__containerFile input {
+	display: none;
+}
+
+.modal__containerFile img {
+	display: none;
+}
+
+.modal__label {
+	font-size: 0.9em;
+	font-weight: 600;
+	font-family: 'Work Sans';
+	color: #3D3D3D;
+}
+
+#modal__title,
+#modal__category {
+	height: 51px;
+	width: 420px;
+	border: none;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.10);
+	font-family: 'Work Sans';
+	font-size: 1em;
+	padding: 0;
+	outline: none;
+	margin: 2px auto 20px;
+	color: #444;
+}
+
+.modal__addProjets form .button {
+	position: relative;
+	bottom: -81px;
+	width: 250px;
+	color: #fff;
+	margin: auto;
+	background-color: #A7A7A7;
+	padding: 10px;
+	border: none;
+}
+
+.modal__addProjets form .button:before {
+	content: "";
+	position: absolute;
+	background-color: rgba(128, 128, 128, 0.61);
+	height: 1px;
+	width: 420px;
+	bottom: 94px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.modal__addProjets form .button:focus {
+	background-color: #1D6154;
+}

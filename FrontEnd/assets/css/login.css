@@ -1,0 +1,131 @@
+/****** style pour le formulaire de la page de connection  ******/
+.form__login form {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+.form__login h2 {
+	text-align: center;
+	 margin: 150px auto 20px; 
+	font-weight: 700;
+	color: #1D6154;
+	font-size: 2.5em;
+}
+#message__error {
+	color: rgb(255, 0, 0);
+	text-align: center;
+	font-weight: 600;
+	font-family: 'Work Sans';
+	font-size: 1.1em;
+}
+.border__error {
+	border: 2px solid rgb(255, 0, 0) !important;
+}
+#email,
+#password {
+	max-width: 100%;
+	width: 450px;
+	height: 50px;
+	margin: auto ;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.10);
+	border: none;
+	outline: none;
+	font-size: 1.5em;
+}
+.form__label {
+	width: 454px;
+	margin: auto;
+	margin-top: 30px;
+	font-weight: 600;
+	color: #3D3D3D;
+	font-family: 'Work Sans';
+}
+#submit {
+	width: 179px;
+	height: 36px;
+	font-family: 'Syne';
+	font-weight: 700;
+	border: none;
+	cursor: pointer;
+}
+#form__user a {
+	color: #3D3D3D;
+	text-align: center;
+	font-weight: 600;
+	margin-bottom: 30px;
+}
+
+/********** style pour la création de la bannière noir mode édition  **********/
+#header {
+	display: flex;
+	justify-content: space-between;
+	margin: 30px auto 20px;
+	
+}
+.header__margin {
+	margin: 89px auto 0 !important;
+}
+.edition__mode {
+	background-color: #000;
+	width: 1440px;
+	max-width: 100%;
+	height: 59px;
+	margin: 0 auto 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+
+}
+.edition__mode p {
+	font-family: 'Work Sans';
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #fff;
+}
+
+/********** bouton modification mode édition **********/
+.btn__modifier {
+	height: 100%;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	font-size: 1.05em;
+	cursor: pointer;
+	transition: all 250ms ease-in-out;
+}
+.btn__modifier:hover {
+	color: #B1663C;
+}
+
+.gallery__filter {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 15px;
+	margin-bottom: 40px;
+}
+.gallery__filter__remove {
+	display: none;
+}
+.button {
+	color: #1D6154;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	padding: 5px 20px;
+	background-color: #fff;
+	font-size: 1.3em;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 250ms ease-in-out;
+}
+.button:focus {
+	background-color: #1D6154;
+	color:#fff;
+}
