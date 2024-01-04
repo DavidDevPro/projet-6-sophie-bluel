@@ -29,6 +29,7 @@ async function displayWorks() {
     createWork(work);
   });
 }
+displayWorks();
 
 /********** récupération des catégories sur l'API **********/
 async function getCategories() {
@@ -47,6 +48,7 @@ async function displayCategories() {
     btnCategories.appendChild(btn);
   }
 }
+displayCategories();
 
 /********** filtrage des projets par catégories **********/
 async function btnFilter() {
@@ -55,17 +57,17 @@ async function btnFilter() {
   arrayBtn.forEach((button) => {
     button.addEventListener("click", (e) => {
       const btnId = e.target.id;
+      console.log(btnId);
       gallery.innerHTML = "";
       arrayWorks.forEach((work) => {
-        if (btnId == work.categoryId) {
-          createWork(work);
-        } else if (btnId == "0") {
+        if (btnId == work.categoryId || btnId == "0") {
           createWork(work);
         }
       });
     });
   });
 }
+btnFilter();
 
 /********** suite et fin du code une fois la connection ok **********/
 
@@ -99,6 +101,7 @@ if (loged === "true") {
   headerEdition();
   createBtnModifier();
   displayModal();
+
   btnCategories.classList.add("gallery__filter__remove");
   logout.addEventListener("click", () => {
     window.sessionStorage.loged = false;
@@ -122,13 +125,3 @@ function displayModal() {
     }
   });
 }
-
-/********** fonction principal main **********/
-function main() {
-  getWorks();
-  displayWorks();
-  getCategories();
-  displayCategories();
-  btnFilter();
-}
-main();

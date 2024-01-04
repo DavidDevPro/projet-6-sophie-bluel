@@ -365,7 +365,7 @@ footer nav ul {
 	font-family: 'Work Sans';
 	font-size: 1.6em;
 	position: absolute;
-	top: 60px;
+	top: 70px;
 }
 .modal__projets .button {
 	width: 250px;
@@ -378,10 +378,46 @@ footer nav ul {
 	content: "";
 	position: absolute;
 	background-color: rgba(128, 128, 128, 0.61);
-	height: 2px;
+	height: 1px;
 	width: 420px;
 	bottom: 140px;
 	left: 50%;
 	transform: translateX(-50%);
 }
+
+/********** création du contenue de la modal **********/
+.modal__content {
+	width: 420px;
+	height: 380px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	
+}
+.modal__content figure{
+	width: 18%;
+	position: relative;
+}
+.modal__content img {
+	width: 100%;
+}
+.modal__content span {
+	width: 17px;
+	height: 19px;
+	position: absolute;
+	top: 7px;
+	right: 7px;
+	background-color: #000;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+} 
+.fa-trash-can {
+	font-size: 0.65em;
+}
+
 
