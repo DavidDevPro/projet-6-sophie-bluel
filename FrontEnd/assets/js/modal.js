@@ -34,13 +34,13 @@ function deleteProjet() {
           "Content-Type": "application/json",
         },
       });
+
       if (response.ok) {
-        const data = await response.json();
-        console.log("la delete a réussi voici la data :", data);
+        console.log("La suppression a réussi.");
         projetsModal();
         displayWorks();
       } else {
-        console.error("Erreur lors de la suppréssion:", response.statusText);
+        console.error("Erreur lors de la suppression:", response.statusText);
       }
     });
   });
@@ -48,7 +48,7 @@ function deleteProjet() {
 
 /********** création et affichage de la deuxième modal **********/
 
-/*********** variables de la deuxième modal ***********/
+/********** variables de la deuxième modal ***********/
 const btnDisplayModal = document.querySelector(".modal__projets button");
 const modalAddProjects = document.querySelector(".modal__addProjets");
 const modalProjets = document.querySelector(".modal__projets");
@@ -93,9 +93,55 @@ inputFile.addEventListener("change", () => {
       [labelFile, iconFile, pFile].forEach((element) => {
         element.style.display = "none";
       });
-      // Affiche l'image une fois chargée
+      /******* Affichage de l'image une fois chargée *******/
       previewImg.style.display = "block";
     };
     reader.readAsDataURL(file);
+  }
+});
+
+/********** Faire une requéte POST pour ajouter ajouter un projet **********/
+const form = document.querySelector("form");
+const title = document.querySelector("#modal__title");
+const category = document.querySelector("#modal__category");
+const formError = document.querySelector(".error");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  /* Vérifier si les champs titre et catégorie sont vides */
+  if (!title.value.trim() || !category.value.trim()) {
+    formError.textContent =
+      "Veuillez renseigner un titre et choisir une catégorie.";
+    form.appendChild(formError);
+
+    /* Afficher une erreur et empêcher l'envoi du formulaire */
+    console.error("Veuillez remplir tous les champs du formulaire.");
+    return;
+  }
+  const formData = new FormData();
+  formData.append("image", inputFile.files[0]);
+  formData.append("title", title.value);
+  formData.append("category", category.value);
+
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (response.ok) {
+      console.log("Nouveau projet créé !");
+      /* Actualisation dynamique du DOM pour ajouter le nouveau projet */
+      projetsModal();
+      displayWorks();
+    } else {
+      console.error("Erreur lors de l'envoi :", response.statusText);
+    }
+  } catch (error) {
+    console.error("Une erreur est survenue lors de l'envoi :", error);
   }
 });
