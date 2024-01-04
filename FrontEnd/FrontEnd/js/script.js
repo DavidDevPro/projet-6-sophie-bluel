@@ -77,6 +77,7 @@ const logout = document.querySelector(".logout");
 const header = document.getElementById("header");
 const token = window.sessionStorage.token;
 const userId = window.sessionStorage.userId;
+console.log(token, userId);
 
 /********** fonction d'ajout de la partie edition dans le header **********/
 function headerEdition() {
