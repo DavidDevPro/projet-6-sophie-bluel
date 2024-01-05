@@ -4,8 +4,12 @@ const btnCategories = document.querySelector(".gallery__filter");
 
 /********** récupération des projets sur l'API **********/
 async function getWorks() {
-  const response = await fetch("http://localhost:5678/api/works");
-  return await response.json();
+  try {
+    const response = await fetch("http://localhost:5678/api/works");
+    return await response.json();
+  } catch (error) {
+    console.error("Erreur lors de la récupération des projets :", error);
+  }
 }
 
 /********** création d'un seul projet **********/
@@ -33,9 +37,14 @@ displayWorks();
 
 /********** récupération des catégories sur l'API **********/
 async function getCategories() {
-  const response = await fetch("http://localhost:5678/api/categories");
-  return await response.json();
+  try {
+    const response = await fetch("http://localhost:5678/api/categories");
+    return await response.json();
+  } catch (error) {
+    console.error("Erreur lors de la récupération des catégories :", error);
+  }
 }
+
 
 /********** création et affichage des boutons sur le dom **********/
 async function displayCategories() {
@@ -103,7 +112,6 @@ if (loged === "true") {
   headerEdition();
   createBtnModifier();
   displayModal();
-
   btnCategories.classList.add("gallery__filter__remove");
   logout.addEventListener("click", () => {
     window.sessionStorage.loged = false;
