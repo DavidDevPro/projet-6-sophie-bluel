@@ -23,6 +23,7 @@
 		<div class="modal__projets">
 			<span><i class="fa-solid fa-xmark"></i></span>
 			<h3>Galerie photo</h3>
+			<div class="message"></div>
 			<div class="modal__content"></div>
 			<button class="button">Ajouter photo</button>
 		</div>
@@ -33,6 +34,7 @@
 			<h3>Ajout photo</h3>
 			<div class="error"></div>
 			<form action="">
+				<div class="message__ok"></div>
 				<div class="modal__containerFile">
 					<span><i class="fa-regular fa-image"></i></span>
 					<label for="file">+ Ajouter photo</label>
@@ -44,7 +46,7 @@
 				<input type="text" id="modal__title" name="title">
 				<label for="category" class="modal__label">Catégorie</label>
 				<select name="categoryId" id="modal__category">
-					<option value="0"></option>
+					<option value=""></option>
 					<option value="1">Objets</option>
 					<option value="2">Appartements</option>
 					<option value="3">Hotels & restaurants</option>

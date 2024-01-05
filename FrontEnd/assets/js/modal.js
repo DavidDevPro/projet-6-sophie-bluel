@@ -36,7 +36,9 @@ function deleteProjet() {
       });
 
       if (response.ok) {
-        console.log("La suppression a réussi.");
+        const formMessage = document.querySelector(".message");
+        formMessage.textContent = "Votre projet été supprimé avec succès !";
+        console.log("La suppression a réussi !");
         projetsModal();
         displayWorks();
       } else {
@@ -105,43 +107,44 @@ const form = document.querySelector("form");
 const title = document.querySelector("#modal__title");
 const category = document.querySelector("#modal__category");
 const formError = document.querySelector(".error");
+const formMessageOk = document.querySelector(".message__ok");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   /* Vérifier si les champs titre et catégorie sont vides */
-  if (!title.value.trim() || !category.value.trim()) {
+  if (!title.value.trim() || category.value === "") {
+    console.log(category.value);
     formError.textContent =
       "Veuillez renseigner un titre et choisir une catégorie.";
     form.appendChild(formError);
 
     /* Afficher une erreur et empêcher l'envoi du formulaire */
     console.error("Veuillez remplir tous les champs du formulaire.");
-    return;
+
   }
   const formData = new FormData();
   formData.append("image", inputFile.files[0]);
   formData.append("title", title.value);
   formData.append("category", category.value);
 
-  try {
-    const response = await fetch("http://localhost:5678/api/works", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    });
+  const response = await fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  });
 
-    if (response.ok) {
-      console.log("Nouveau projet créé !");
-      /* Actualisation dynamique du DOM pour ajouter le nouveau projet */
-      projetsModal();
-      displayWorks();
-    } else {
-      console.error("Erreur lors de l'envoi :", response.statusText);
-    }
-  } catch (error) {
-    console.error("Une erreur est survenue lors de l'envoi :", error);
+  if (response.ok) {
+    formError.style.display = "none";
+    formMessageOk.textContent = "Votre projet été ajouté avec succès !";
+    console.log("Nouveau projet créé !");
+    /* Actualisation dynamique du DOM pour ajouter le nouveau projet */
+    projetsModal();
+    displayWorks();
+  }
+  else {
+    console.error("Erreur lors de l'envoi :", response.statusText);
   }
 });
