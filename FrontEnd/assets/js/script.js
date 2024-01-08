@@ -14,9 +14,11 @@ async function getWorks() {
 
 /********** création d'un seul projet **********/
 function createWork(work) {
+  /********** variables de createWork(work) ***********/
   const baliseFigure = document.createElement("figure");
   const images = document.createElement("img");
   const figcaption = document.createElement("figcaption");
+
   images.src = work.imageUrl;
   images.alt = work.title;
   figcaption.innerHTML = work.title;
@@ -33,7 +35,6 @@ async function displayWorks() {
     createWork(work);
   });
 }
-
 /********** récupération des catégories sur l'API **********/
 async function getCategories() {
   try {
@@ -43,7 +44,6 @@ async function getCategories() {
     console.error("Erreur lors de la récupération des catégories :", error);
   }
 }
-
 /********** création et affichage des boutons sur le dom **********/
 async function displayCategories() {
   const arrayCategories = await getCategories();
@@ -78,7 +78,7 @@ async function categoryFilter() {
   });
 }
 
-/********** suite et fin du code une fois la connection ok **********/
+/********** suite et fin du code une fois la connection ok ( => fichier login.js) **********/
 
 /********** variables suite et fin connection ***********/
 const loged = window.sessionStorage.loged;
@@ -86,8 +86,10 @@ const logout = document.querySelector(".logout");
 
 /********** fonction d'ajout de la partie edition dans le header **********/
 function headerEdition() {
+  /********** variables de  headerEdition() ***********/
   const header = document.getElementById("header");
   const editionBanner = document.createElement("div");
+
   editionBanner.classList.add("edition__mode");
   editionBanner.innerHTML = `<p><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>`;
   header.classList.add("header__margin");
@@ -96,8 +98,10 @@ function headerEdition() {
 
 /********** fonction d'ajout du bouton d'edition **********/
 function createBtnModifier() {
+  /********** variables de  createBtnModifier() ***********/
   const parentTitle = document.querySelector(".portfolio__title");
   const createBtn = document.createElement("div");
+
   createBtn.classList.add("btn__modifier");
   parentTitle.appendChild(createBtn);
   createBtn.innerHTML =

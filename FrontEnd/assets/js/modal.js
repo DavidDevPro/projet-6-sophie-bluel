@@ -1,10 +1,12 @@
 /********** variables partie "modal" **********/
 const token = window.sessionStorage.token;
+const containerModal = document.querySelector(".modal__container");
+const containerFile = document.querySelector(".modal__containerFile");
+const inputFile = containerFile.querySelector("#file");
 
 /********** ouverture et fermeture de la modal au click  **********/
 function displayModal() {
   const btnModal = document.querySelector(".btn__modifier");
-  const containerModal = document.querySelector(".modal__container");
   const xmark = document.querySelector(".modal__container .fa-xmark");
   btnModal.addEventListener("click", () => {
     containerModal.style.display = "flex";
@@ -20,7 +22,7 @@ function displayModal() {
 }
 
 /********** création et ajout des projets dans la modal **********/
-async function projetsModal() {
+async function projectsModal() {
   const projetContainer = document.querySelector(".modal__content");
   projetContainer.innerHTML = "";
   const modalProjets = await getWorks();
@@ -37,12 +39,13 @@ async function projetsModal() {
     figure.appendChild(span);
     span.appendChild(trash);
   });
-  deleteProjet(); /********** => => => ATTENTION !!! faire jouer la fonction deleteProjet
+  deleteProject(); /********** => => => ATTENTION !!! faire jouer la fonction deleteProjet
   une fois que la fonction projectModal ai fini d'être lu !!! ATTENTION **********/
 }
 
 /********** suppréssion au click d'une image dans la modal **********/
-function deleteProjet() {
+function deleteProject() {
+  /********** variables de deleteProject() ***********/
   const trashIcons = document.querySelectorAll(".fa-trash-can");
   trashIcons.forEach((trash) => {
     trash.addEventListener("click", async (e) => {
@@ -59,7 +62,7 @@ function deleteProjet() {
         const formMessage = document.querySelector(".message");
         formMessage.textContent = "Votre projet été supprimé avec succès !";
         console.log("félicitations, la suppression a réussi !");
-        projetsModal();
+        projectsModal();
         displayWorks();
       } else {
         console.error("Erreur lors de la suppression:", response.statusText);
@@ -69,17 +72,14 @@ function deleteProjet() {
 }
 
 /********** création et affichage de la deuxième modal **********/
-
-/********** variables de la deuxième modal ***********/
-const btnDisplayModal = document.querySelector(".modal__projets button");
-const modalAddProjects = document.querySelector(".modal__addProjets");
-const modalProjets = document.querySelector(".modal__projets");
-const arrowLeft = document.querySelector(".modal__addProjets .fa-arrow-left");
-const modalXmark = document.querySelector(".modal__addProjets .fa-xmark");
-const containerModal = document.querySelector(".modal__container");
-
-/*********** fonction display de la deuxième modal ***********/
 function displaySecondModal() {
+  /********** variables de la deuxième modal ***********/
+  const btnDisplayModal = document.querySelector(".modal__projets button");
+  const modalAddProjects = document.querySelector(".modal__addProjets");
+  const modalProjets = document.querySelector(".modal__projets");
+  const arrowLeft = document.querySelector(".modal__addProjets .fa-arrow-left");
+  const modalXmark = document.querySelector(".modal__addProjets .fa-xmark");
+
   btnDisplayModal.addEventListener("click", () => {
     modalAddProjects.style.display = "flex";
     modalProjets.style.display = "none";
@@ -95,14 +95,13 @@ function displaySecondModal() {
 }
 
 /********** prévisualisation de l'image du projet **********/
-const containerFile = document.querySelector(".modal__containerFile");
-const inputFile = containerFile.querySelector("#file");
-const previewImg = containerFile.querySelector("img");
-const labelFile = containerFile.querySelector("label");
-const iconFile = containerFile.querySelector(".fa-image");
-const pFile = containerFile.querySelector("p");
-
 function imageCharged() {
+  /********** variables de imageCharged() ***********/
+  const previewImg = containerFile.querySelector("img");
+  const labelFile = containerFile.querySelector("label");
+  const iconFile = containerFile.querySelector(".fa-image");
+  const pFile = containerFile.querySelector("p");
+
   inputFile.addEventListener("change", () => {
     console.log("Input file changed!");
     const file = inputFile.files[0];
@@ -124,13 +123,14 @@ function imageCharged() {
 }
 
 /********** Faire une requéte POST pour ajouter ajouter un projet **********/
-const form = document.querySelector("form");
-const title = document.querySelector("#modal__title");
-const category = document.querySelector("#modal__category");
-const formError = document.querySelector(".error");
-const formMessageOk = document.querySelector(".message__ok");
-
 function newProject() {
+  /********** variables de newProject() ***********/
+  const form = document.querySelector("form");
+  const title = document.querySelector("#modal__title");
+  const category = document.querySelector("#modal__category");
+  const formError = document.querySelector(".error");
+  const formMessageOk = document.querySelector(".message__ok");
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -159,9 +159,9 @@ function newProject() {
 
     if (response.ok) {
       formError.style.display = "none";
-      formMessageOk.textContent = "Votre projet été ajouté avec succès !";
+      formMessageOk.textContent = "Votre projet a été ajouté avec succès !";
       console.log("Félicitations, nouveau projet créé avec succés !");
-      projetsModal();
+      projectsModal();
       displayWorks();
     } else {
       console.error("Erreur lors de l'envoi :", response.statusText);
@@ -172,7 +172,7 @@ function newProject() {
 /********** fonction principal mainModal**********/
 function mainModal() {
   displayModal();
-  projetsModal();
+  projectsModal();
   displaySecondModal();
   imageCharged();
   newProject();

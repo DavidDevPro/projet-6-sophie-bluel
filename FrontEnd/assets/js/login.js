@@ -14,8 +14,8 @@ function borderError() {
 async function login() {
   Form.addEventListener("submit", async function (e) {
     e.preventDefault();
-    const email = userEmail.value; // récupération de la valeur saisie de email
-    const password = userPassword.value; // récupération de la valeur saisie de password
+    const email = userEmail.value;
+    const password = userPassword.value;
 
     const response = await fetch("http://localhost:5678/api/users/login", {
       method: "POST",
@@ -23,7 +23,7 @@ async function login() {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password }), // email et password au format json
+      body: JSON.stringify({ email, password }),
     });
 
     if (response.ok) {
@@ -31,7 +31,7 @@ async function login() {
       sessionStorage.setItem("token", userData.token);
       sessionStorage.setItem("userId", userData.userId);
       window.sessionStorage.loged = true;
-      window.location.href = "./index.html"; // rediréction page d'accueil du site
+      window.location.href = "./index.html";
     } else {
       messageError.textContent =
         "L'adresse email ou le mot de passe ne sont pas valides. Veuillez réessayer.";
@@ -42,4 +42,4 @@ async function login() {
 }
 login();
 
-/********** suite et fin du code => fichier works.js **********/
+/********** suite et fin du code => fichier script.js **********/
