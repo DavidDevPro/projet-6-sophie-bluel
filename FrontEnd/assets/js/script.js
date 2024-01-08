@@ -28,7 +28,7 @@ function createWork(work) {
 /********** affichage des projets sur le dom **********/
 async function displayWorks() {
   gallery.innerHTML = "";
-  const arrayWorks = await getWorks(); //tableau des projets
+  const arrayWorks = await getWorks();
   arrayWorks.forEach((work) => {
     createWork(work);
   });
@@ -45,50 +45,51 @@ async function getCategories() {
   }
 }
 
-
 /********** création et affichage des boutons sur le dom **********/
 async function displayCategories() {
-  const arrayCategories = await getCategories(); //tableau des catégories
-  for (i = 0; i < arrayCategories.length; i++) {
+  const arrayCategories = await getCategories();
+  arrayCategories.forEach((button) => {
     const btn = document.createElement("button");
+    btn.id = button.id;
+    btn.textContent = button.name;
     btn.classList.add("button");
-    btn.innerHTML = arrayCategories[i].name;
-    btn.id = arrayCategories[i].id;
     btnCategories.appendChild(btn);
-  }
+  });
 }
 displayCategories();
 
 /********** filtrage des projets par catégories **********/
-async function btnFilter() {
+async function categoryFilter() {
   const arrayWorks = await getWorks();
   const arrayBtn = document.querySelectorAll(".gallery__filter button");
   arrayBtn.forEach((button) => {
     button.addEventListener("click", (e) => {
       const btnId = e.target.id;
-      console.log(btnId);
       gallery.innerHTML = "";
-      arrayWorks.forEach((work) => {
-        if (btnId == work.categoryId || btnId == "0") {
+      if (btnId !== "0") {
+        const newArray = arrayWorks.filter((work) => {
+          return work.categoryId == btnId;
+        });
+        newArray.forEach((work) => {
           createWork(work);
-        }
-      });
+        });
+      } else {
+        displayWorks();
+      }
     });
   });
 }
-btnFilter();
+categoryFilter();
 
 /********** suite et fin du code une fois la connection ok **********/
 
 /********** variables suite et fin connection ***********/
 const loged = window.sessionStorage.loged;
 const logout = document.querySelector(".logout");
-const header = document.getElementById("header");
-const token = window.sessionStorage.token;
-const userId = window.sessionStorage.userId;
 
 /********** fonction d'ajout de la partie edition dans le header **********/
 function headerEdition() {
+  const header = document.getElementById("header");
   const editionBanner = document.createElement("div");
   editionBanner.classList.add("edition__mode");
   editionBanner.innerHTML = `<p><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>`;
@@ -111,7 +112,6 @@ if (loged === "true") {
   logout.textContent = "Logout";
   headerEdition();
   createBtnModifier();
-  displayModal();
   btnCategories.classList.add("gallery__filter__remove");
   logout.addEventListener("click", () => {
     window.sessionStorage.loged = false;
@@ -126,21 +126,3 @@ logout.addEventListener("click", () => {
     window.location.href = "./login.html";
   }
 });
-
-/********** fonction d'affichage de la modal au click sur le bouton modifier ***********/
-function displayModal() {
-  const btnModal = document.querySelector(".btn__modifier");
-  const containerModal = document.querySelector(".modal__container");
-  const xmark = document.querySelector(".modal__container .fa-xmark");
-  btnModal.addEventListener("click", () => {
-    containerModal.style.display = "flex";
-  });
-  xmark.addEventListener("click", () => {
-    containerModal.style.display = "none";
-  });
-  containerModal.addEventListener("click", (e) => {
-    if (e.target.className === "modal__container") {
-      containerModal.style.display = "none";
-    }
-  });
-}

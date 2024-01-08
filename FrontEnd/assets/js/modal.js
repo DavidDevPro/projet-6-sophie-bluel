@@ -1,3 +1,25 @@
+/********** variables partie "modal" **********/
+const token = window.sessionStorage.token;
+
+/********** ouverture et fermeture de la modal au click  **********/
+function displayModal() {
+  const btnModal = document.querySelector(".btn__modifier");
+  const containerModal = document.querySelector(".modal__container");
+  const xmark = document.querySelector(".modal__container .fa-xmark");
+  btnModal.addEventListener("click", () => {
+    containerModal.style.display = "flex";
+  });
+  xmark.addEventListener("click", () => {
+    containerModal.style.display = "none";
+  });
+  containerModal.addEventListener("click", (e) => {
+    if (e.target.className === "modal__container") {
+      containerModal.style.display = "none";
+    }
+  });
+}
+displayModal();
+
 /********** création et ajout des projets dans la modal **********/
 async function projetsModal() {
   const projetContainer = document.querySelector(".modal__content");
@@ -38,7 +60,7 @@ function deleteProjet() {
       if (response.ok) {
         const formMessage = document.querySelector(".message");
         formMessage.textContent = "Votre projet été supprimé avec succès !";
-        console.log("La suppression a réussi !");
+        console.log("félicitations, la suppression a réussi !");
         projetsModal();
         displayWorks();
       } else {
@@ -103,7 +125,7 @@ function imageCharged() {
     }
   });
 }
-imageCharged()
+imageCharged();
 
 /********** Faire une requéte POST pour ajouter ajouter un projet **********/
 const form = document.querySelector("form");
@@ -125,7 +147,6 @@ function newProject() {
 
       /* Afficher une erreur et empêcher l'envoi du formulaire */
       console.error("Veuillez remplir tous les champs du formulaire.");
-
     }
     const formData = new FormData();
     formData.append("image", inputFile.files[0]);
@@ -143,14 +164,12 @@ function newProject() {
     if (response.ok) {
       formError.style.display = "none";
       formMessageOk.textContent = "Votre projet été ajouté avec succès !";
-      console.log("Nouveau projet créé !");
-      /* Actualisation dynamique du DOM pour ajouter le nouveau projet */
+      console.log("Félicitations, nouveau projet créé avec succés !");
       projetsModal();
       displayWorks();
-    }
-    else {
+    } else {
       console.error("Erreur lors de l'envoi :", response.statusText);
     }
   });
 }
-newProject()
+newProject();
