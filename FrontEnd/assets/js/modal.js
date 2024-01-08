@@ -18,7 +18,6 @@ function displayModal() {
     }
   });
 }
-displayModal();
 
 /********** création et ajout des projets dans la modal **********/
 async function projetsModal() {
@@ -41,7 +40,6 @@ async function projetsModal() {
   deleteProjet(); /********** => => => ATTENTION !!! faire jouer la fonction deleteProjet
   une fois que la fonction projectModal ai fini d'être lu !!! ATTENTION **********/
 }
-projetsModal();
 
 /********** suppréssion au click d'une image dans la modal **********/
 function deleteProjet() {
@@ -95,7 +93,6 @@ function displaySecondModal() {
     window.location = "index.html";
   });
 }
-displaySecondModal();
 
 /********** prévisualisation de l'image du projet **********/
 const containerFile = document.querySelector(".modal__containerFile");
@@ -125,7 +122,6 @@ function imageCharged() {
     }
   });
 }
-imageCharged();
 
 /********** Faire une requéte POST pour ajouter ajouter un projet **********/
 const form = document.querySelector("form");
@@ -172,4 +168,13 @@ function newProject() {
     }
   });
 }
-newProject();
+
+/********** fonction principal mainModal**********/
+function mainModal() {
+  displayModal();
+  projetsModal();
+  displaySecondModal();
+  imageCharged();
+  newProject();
+}
+mainModal();

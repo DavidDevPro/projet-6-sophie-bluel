@@ -33,7 +33,6 @@ async function displayWorks() {
     createWork(work);
   });
 }
-displayWorks();
 
 /********** récupération des catégories sur l'API **********/
 async function getCategories() {
@@ -56,7 +55,6 @@ async function displayCategories() {
     btnCategories.appendChild(btn);
   });
 }
-displayCategories();
 
 /********** filtrage des projets par catégories **********/
 async function categoryFilter() {
@@ -79,7 +77,6 @@ async function categoryFilter() {
     });
   });
 }
-categoryFilter();
 
 /********** suite et fin du code une fois la connection ok **********/
 
@@ -126,3 +123,11 @@ logout.addEventListener("click", () => {
     window.location.href = "./login.html";
   }
 });
+
+/********** fonction principal mainScript**********/
+function mainScript() {
+  displayWorks();
+  displayCategories();
+  categoryFilter();
+}
+mainScript();
