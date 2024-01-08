@@ -1,24 +1,25 @@
 /********** variables partie "modal" **********/
-const token = window.sessionStorage.token;
 const containerModal = document.querySelector(".modal__container");
 const containerFile = document.querySelector(".modal__containerFile");
 const inputFile = containerFile.querySelector("#file");
 
 /********** ouverture et fermeture de la modal au click  **********/
 function displayModal() {
-  const btnModal = document.querySelector(".btn__modifier");
-  const xmark = document.querySelector(".modal__container .fa-xmark");
-  btnModal.addEventListener("click", () => {
-    containerModal.style.display = "flex";
-  });
-  xmark.addEventListener("click", () => {
-    containerModal.style.display = "none";
-  });
-  containerModal.addEventListener("click", (e) => {
-    if (e.target.className === "modal__container") {
+  if (token) {
+    const btnModal = document.querySelector(".btn__modifier");
+    const xmark = document.querySelector(".modal__container .fa-xmark");
+    btnModal.addEventListener("click", () => {
+      containerModal.style.display = "flex";
+    });
+    xmark.addEventListener("click", () => {
       containerModal.style.display = "none";
-    }
-  });
+    });
+    containerModal.addEventListener("click", (e) => {
+      if (e.target.className === "modal__container") {
+        containerModal.style.display = "none";
+      }
+    });
+  }
 }
 
 /********** création et ajout des projets dans la modal **********/

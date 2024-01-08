@@ -1,6 +1,7 @@
 /********** variables du projet work & categories **********/
 const gallery = document.querySelector(".gallery");
 const btnCategories = document.querySelector(".gallery__filter");
+const token = window.sessionStorage.token;
 
 /********** récupération des projets sur l'API **********/
 async function getWorks() {
@@ -109,19 +110,19 @@ function createBtnModifier() {
 }
 
 /********** bouton logout, admin et logique de déconnection ***********/
-if (loged === "true") {
+if (token) {
   logout.textContent = "Logout";
   headerEdition();
   createBtnModifier();
   btnCategories.classList.add("gallery__filter__remove");
   logout.addEventListener("click", () => {
-    window.sessionStorage.loged = false;
+    window.sessionStorage.token = "";
   });
 }
 
 /********** condition de redirection html login/logout**********/
 logout.addEventListener("click", () => {
-  if (loged === "true") {
+  if (token) {
     window.location.href = "./index.html";
   } else {
     window.location.href = "./login.html";

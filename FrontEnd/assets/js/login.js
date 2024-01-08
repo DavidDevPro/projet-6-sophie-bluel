@@ -30,7 +30,6 @@ async function login() {
       const userData = await response.json();
       sessionStorage.setItem("token", userData.token);
       sessionStorage.setItem("userId", userData.userId);
-      window.sessionStorage.loged = true;
       window.location.href = "./index.html";
     } else {
       messageError.textContent =
